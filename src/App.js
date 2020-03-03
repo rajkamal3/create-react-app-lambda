@@ -1,50 +1,28 @@
-import React, { Component } from "react"
-import logo from "./logo.svg"
-import "./App.css"
-
-class LambdaDemo extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { loading: false, msg: null }
-  }
-
-  handleClick = api => e => {
-    e.preventDefault()
-
-    this.setState({ loading: true })
-    fetch("/.netlify/functions/" + api)
-      .then(response => response.json())
-      .then(json => this.setState({ loading: false, msg: json.msg }))
-  }
-
-  render() {
-    const { loading, msg } = this.state
-
-    return (
-      <p>
-        <button onClick={this.handleClick("hello")}>{loading ? "Loading..." : "Call Lambda"}</button>
-        <button onClick={this.handleClick("async-dadjoke")}>{loading ? "Loading..." : "Call Async Lambda"}</button>
-        <br />
-        <span>{msg}</span>
-      </p>
-    )
-  }
-}
+import React, { Component } from 'react';
+import Screener from './components/_invest/screener';
+import styles from './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <LambdaDemo />
-        </header>
-      </div>
-    )
-  }
+    componentDidMount() {
+        handleIframe();
+    }
+
+    render() {
+        return (
+            <div className={styles.holder}>
+                <Screener />
+            </div>
+        );
+    }
 }
 
-export default App
+export default App;
+
+export const handleIframe = () => {
+    if (window.self === window.top) {
+        var antiClickjack = document.querySelector('#antiClickjack');
+        antiClickjack.parentNode.removeChild(antiClickjack);
+    } else {
+        window.top.location = window.self.location;
+    }
+};
