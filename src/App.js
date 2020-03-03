@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Screener from './components/_invest/screener';
+import Screener from './lambda/screener';
 import styles from './App.css';
 
 class App extends Component {
