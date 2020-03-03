@@ -1,0 +1,32 @@
+.userInfoContainer {
+    border-bottom: 1px solid #f0f3f6;
+}
+
+.userInfo {
+    height: 132px;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.creditCard {
+    margin-left: -5px;
+}
+
+.userDetails {
+    margin-top: 7px;
+    margin-left: -105px;
+    display: grid;
+    grid-template-rows: repeat(2, 5px);
+    grid-row-gap: 18px;
+}
+
+.userName {
+    width: 250px;
+    height: 20px;
+}
+
+.userDetails p {
+    font-size: 80%;
+}
